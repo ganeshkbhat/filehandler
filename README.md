@@ -5,7 +5,7 @@ The demos can be found in the folder [demos](https://github.com/ganeshkbhat/file
 
 USAGE:
 ```
-const filehandler = require("fshandlers").default;
+const filehandler = require("fs-handlers").default;
 const FileHandler = filehandler.FileHandler;
 const fs = new FileHandler("./demos/demos.test.txt");
 (async () => {
