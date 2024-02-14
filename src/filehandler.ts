@@ -71,7 +71,9 @@ export class FileHandlerStatic implements FileHandlerStaticInterface {
       // readerStream.setEncoding(encoding || { encoding: 'UTF8' });
       readStream.on('error', (err: any) => { reject(err); });
       readStream.on('data', (chunk: any) => { chunks.push(chunk); });
-      readStream.on('end', () => { resolve(chunks); });
+      readStream.on('end', () => {
+        Buffer.isBuffer(chunks[0]) ? resolve(Buffer.concat(chunks)) : resolve(chunks.join(""));
+      });
     });
   }
 
