@@ -55,6 +55,14 @@ export interface FileHandlerInterface {
  */
 export class FileHandlerStatic implements FileHandlerStaticInterface {
 
+  /**
+   *
+   *
+   * @param {string} filePath
+   * @param {(string | null | undefined)} [encoding]
+   * @return {*}  {Promise<any>}
+   * @memberof FileHandlerStatic
+   */
   readFileStreaming(filePath: string, encoding?: string | null | undefined): Promise<any> {
     return new Promise((resolve, reject) => {
       let readStream = fs.createReadStream(filePath);
@@ -66,6 +74,15 @@ export class FileHandlerStatic implements FileHandlerStaticInterface {
     });
   }
 
+  /**
+   *
+   *
+   * @param {string} filePath
+   * @param {any[]} iterableData
+   * @param {(string | null | undefined)} [encoding]
+   * @return {*}  {Promise<any>}
+   * @memberof FileHandlerStatic
+   */
   writeFileStreaming(filePath: string, iterableData: any[], encoding?: string | null | undefined): Promise<any> {
     return new Promise(async (resolve, reject) => {
       try {
@@ -96,11 +113,24 @@ export class FileHandlerStatic implements FileHandlerStaticInterface {
 export class FileHandler implements FileHandlerInterface {
   filePath: string;
   encoding: string;
+
+  /**
+   * Creates an instance of FileHandler.
+   * @param {string} filePath
+   * @param {(string | null | undefined)} [encoding]
+   * @memberof FileHandler
+   */
   constructor(filePath: string, encoding?: string | null | undefined) {
     this.filePath = filePath;
     this.encoding = encoding || 'UTF8';
   }
 
+  /**
+   *
+   *
+   * @return {*}  {Promise<any>}
+   * @memberof FileHandler
+   */
   readFileStreaming(): Promise<any> {
     return new Promise((resolve, reject) => {
       let readStream = fs.createReadStream(this.filePath);
@@ -112,6 +142,13 @@ export class FileHandler implements FileHandlerInterface {
     });
   }
 
+  /**
+   *
+   *
+   * @param {any[]} iterableData
+   * @return {*}  {Promise<any>}
+   * @memberof FileHandler
+   */
   writeFileStreaming(iterableData: any[]): Promise<any> {
     return new Promise(async (resolve, reject) => {
       try {
