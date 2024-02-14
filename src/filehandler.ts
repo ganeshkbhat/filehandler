@@ -22,11 +22,23 @@ import { once } from 'node:events';
 import * as util from 'node:util';
 import * as stream from 'node:stream';
 
+/**
+ *
+ *
+ * @export
+ * @interface FileHandlerStaticInterface
+ */
 export interface FileHandlerStaticInterface {
-  readFileStreaming: (filePath: string, encoding: string) => Promise<any>
-  writeFileStreaming: (filePath: string, iterableData: any[], encoding: string) => Promise<any>
+  readFileStreaming: (filePath: string, encoding?: string | null | undefined) => Promise<any>
+  writeFileStreaming: (filePath: string, iterableData: any[], encoding?: string | null | undefined) => Promise<any>
 }
 
+/**
+ *
+ *
+ * @export
+ * @interface FileHandlerInterface
+ */
 export interface FileHandlerInterface {
   filePath: string;
   encoding: string;
@@ -34,9 +46,16 @@ export interface FileHandlerInterface {
   writeFileStreaming: (iterableData: any[]) => Promise<any>
 }
 
+/**
+ *
+ *
+ * @export
+ * @class FileHandlerStatic
+ * @implements {FileHandlerStaticInterface}
+ */
 export class FileHandlerStatic implements FileHandlerStaticInterface {
 
-  readFileStreaming(filePath: string, encoding: string): Promise<any> {
+  readFileStreaming(filePath: string, encoding?: string | null | undefined): Promise<any> {
     return new Promise((resolve, reject) => {
       let readStream = fs.createReadStream(filePath);
       let chunks: any[] = [];
@@ -47,7 +66,7 @@ export class FileHandlerStatic implements FileHandlerStaticInterface {
     });
   }
 
-  writeFileStreaming(filePath: string, iterableData: any[], encoding: string): Promise<any> {
+  writeFileStreaming(filePath: string, iterableData: any[], encoding?: string | null | undefined): Promise<any> {
     return new Promise(async (resolve, reject) => {
       try {
         const finished = util.promisify(stream.finished); // (A)
@@ -67,10 +86,17 @@ export class FileHandlerStatic implements FileHandlerStaticInterface {
   }
 }
 
+/**
+ *
+ *
+ * @export
+ * @class FileHandler
+ * @implements {FileHandlerInterface}
+ */
 export class FileHandler implements FileHandlerInterface {
   filePath: string;
   encoding: string;
-  constructor(filePath: string, encoding: string) {
+  constructor(filePath: string, encoding: string | null | undefined) {
     this.filePath = filePath;
     this.encoding = encoding || 'UTF8';
   }
