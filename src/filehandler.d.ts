@@ -5,12 +5,13 @@
  * Description: Read and Write files in files using streaming
  * Install: npm i stream-fs --save
  * Github: https://github.com/ganeshkbhat/filehandler
- * npmjs Link: https://www.npmjs.com/package/stream-fs
+ * npmjs Link: https://www.npmjs.com/package/streamfs
  * File: index.js
  * File Description: Read and Write files in files using streaming
  *
  *
 */
+/// <reference types="node" />
 /**
  *
  *
@@ -18,8 +19,8 @@
  * @interface FileHandlerStaticInterface
  */
 export interface FileHandlerStaticInterface {
-    readFileStreaming: (filePath: string, options?: object | null | undefined) => Promise<any>;
-    writeFileStreaming: (filePath: string, iterableData: any[], options?: object | null | undefined) => Promise<any>;
+    readFileStreaming: (filePath: string, options?: BufferEncoding | any | undefined) => Promise<any>;
+    writeFileStreaming: (filePath: string, iterableData: any[], options?: BufferEncoding | any | undefined) => Promise<any>;
 }
 /**
  *
@@ -29,7 +30,7 @@ export interface FileHandlerStaticInterface {
  */
 export interface FileHandlerInterface {
     filePath: string;
-    options: object | null | undefined;
+    options: BufferEncoding | any | undefined;
     readFileStreaming: () => Promise<any>;
     writeFileStreaming: (iterableData: any[]) => Promise<any>;
 }
@@ -49,7 +50,7 @@ export declare class FileHandlerStatic implements FileHandlerStaticInterface {
      * @return {*}  {Promise<any>}
      * @memberof FileHandlerStatic
      */
-    readFileStreaming(filePath: string, options?: object | null | undefined): Promise<any>;
+    readFileStreaming(filePath: string, options?: BufferEncoding | any | undefined): Promise<any>;
     /**
      *
      *
@@ -59,7 +60,7 @@ export declare class FileHandlerStatic implements FileHandlerStaticInterface {
      * @return {*}  {Promise<any>}
      * @memberof FileHandlerStatic
      */
-    writeFileStreaming(filePath: string, iterableData: any[], options?: object | null | undefined): Promise<any>;
+    writeFileStreaming(filePath: string, iterableData: any[], options?: BufferEncoding | any | undefined): Promise<any>;
 }
 /**
  *
@@ -70,14 +71,14 @@ export declare class FileHandlerStatic implements FileHandlerStaticInterface {
  */
 export declare class FileHandler implements FileHandlerInterface {
     filePath: string;
-    options: object | null | undefined;
+    options: BufferEncoding | any | undefined;
     /**
      * Creates an instance of FileHandler.
      * @param {string} filePath
      * @param {(string | null | undefined)} [options]
      * @memberof FileHandler
      */
-    constructor(filePath: string, options?: object | null | undefined);
+    constructor(filePath: string, options?: BufferEncoding | any | undefined);
     /**
      *
      *

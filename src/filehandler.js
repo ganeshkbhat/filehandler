@@ -5,7 +5,7 @@
  * Description: Read and Write files in files using streaming
  * Install: npm i stream-fs --save
  * Github: https://github.com/ganeshkbhat/filehandler
- * npmjs Link: https://www.npmjs.com/package/stream-fs
+ * npmjs Link: https://www.npmjs.com/package/streamfs
  * File: index.js
  * File Description: Read and Write files in files using streaming
  *
@@ -111,7 +111,7 @@ var FileHandlerStatic = /** @class */ (function () {
             // readerStream.setEncoding(encoding || { encoding: 'UTF8' });
             readStream.on('error', function (err) { reject(err); });
             readStream.on('data', function (chunk) { chunks.push(chunk); });
-            readStream.on('end', function () { resolve(node_buffer_1.Buffer.concat(chunks)); });
+            readStream.on('end', function () { resolve(chunks); });
         });
     };
     /**
@@ -133,7 +133,7 @@ var FileHandlerStatic = /** @class */ (function () {
                     case 0:
                         _e.trys.push([0, 15, , 16]);
                         finished = util.promisify(stream.finished);
-                        writable = fs.createWriteStream(filePath, options || {});
+                        writable = fs.createWriteStream(filePath, options || "utf8");
                         _e.label = 1;
                     case 1:
                         _e.trys.push([1, 7, 8, 13]);

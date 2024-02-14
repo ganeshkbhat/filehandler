@@ -21,7 +21,7 @@ import { default as filehandler } from "../index";
 const FileHandler = filehandler.FileHandler;
 const FileHandlerStatic = filehandler.FileHandlerStatic;
 
-const fs = new FileHandler("./demos/demos.test.txt");
+const fs = new FileHandler("./demos/demos.test.txt", "UTF8");
 (async () => {
   let tst = await fs.readFileStreaming();
   tst = tst.toString(fs.options);

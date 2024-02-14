@@ -27,13 +27,12 @@ describe('[request tests] Tests to ', () => {
   after(() => { });
 
   it('should respond with the text to be license as stored in the demos folder', async () => {
-    const fs = new FileHandler("./demos/demos.test.txt");
-    let tst = await fs.readFileStreaming();
-    tst = tst.toString(fs.encoding);
+    const fs = new FileHandlerStatic();
+    let tst = await fs.readFileStreaming("./demos/demos.test.txt", "UTF8");
     // console.log("read: \n\n", tst);
-    let written = await fs.writeFileStreaming(tst);
+    let written = await fs.writeFileStreaming("./demos/demos.test.txt", tst, "UTF8");
     // console.log("written: ", written);
-    let actual = tst.split("\r\n").join("\n");
+    let actual = tst;
     let expected = `MIT License
 
 Copyright (c) 2024 Krishnamurthy G B
@@ -60,11 +59,10 @@ SOFTWARE.
   });
 
   it('should respond with the text of equal size to be license as stored in the demos folder', async () => {
-    const fs = new FileHandler("./demos/demos.test.txt");
-    let tst = await fs.readFileStreaming();
-    tst = tst.toString(fs.encoding);
+    const fs = new FileHandlerStatic();
+    let tst = await fs.readFileStreaming("./demos/demos.test.txt", "UTF8");
     // console.log("read: \n\n", tst);
-    let written = await fs.writeFileStreaming(tst);
+    let written = await fs.writeFileStreaming("./demos/demos.test.txt", tst, "UTF8");
     // console.log("written: ", written);
     let actual = tst.split("\r\n").join("\n").length;
     let expected = `MIT License

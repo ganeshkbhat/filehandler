@@ -5,7 +5,7 @@
  * Description: Read and Write files in files using streaming
  * Install: npm i stream-fs --save
  * Github: https://github.com/ganeshkbhat/filehandler
- * npmjs Link: https://www.npmjs.com/package/stream-fs
+ * npmjs Link: https://www.npmjs.com/package/streamfs
  * File: index.js
  * File Description: Read and Write files in files using streaming
  *
@@ -56,7 +56,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = __importDefault(require("../index"));
 var FileHandler = index_1.default.FileHandler;
 var FileHandlerStatic = index_1.default.FileHandlerStatic;
-var fs = new FileHandler("./demos/demos.test.txt");
+var fs = new FileHandler("./demos/demos.test.txt", "UTF8");
 (function () { return __awaiter(void 0, void 0, void 0, function () {
     var tst, written;
     return __generator(this, function (_a) {
