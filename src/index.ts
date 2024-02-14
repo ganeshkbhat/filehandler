@@ -4,7 +4,7 @@
  * Author: Ganesh B
  * Description: 
  * Install: npm i  --save
- * Github: https://github.com/ganeshkbhat/
+ * Github: https://github.com/ganeshkbhat/filehandler
  * npmjs Link: https://www.npmjs.com/package/
  * File: index.js
  * File Description: 
