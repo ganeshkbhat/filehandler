@@ -1,15 +1,15 @@
 /**
- *
- * Package:
+ * 
+ * Package: stream-fs
  * Author: Ganesh B
- * Description:
- * Install: npm i  --save
+ * Description: Read and Write files in files using streaming
+ * Install: npm i stream-fs --save
  * Github: https://github.com/ganeshkbhat/filehandler
- * npmjs Link: https://www.npmjs.com/package/
+ * npmjs Link: https://www.npmjs.com/package/stream-fs
  * File: index.js
- * File Description:
- *
- *
+ * File Description: Read and Write files in files using streaming
+ * 
+ * 
 */
 
 /* eslint no-console: 0 */
