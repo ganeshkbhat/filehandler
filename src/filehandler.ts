@@ -23,16 +23,18 @@ import * as util from 'node:util';
 import * as stream from 'node:stream';
 
 export interface FileHandlerStaticInterface {
-  readFileStreaming: (filePath: string, encoding: string) => any
-  writeFileStreaming: (filePath: string, iterableData: any[], encoding: string) => any
+  readFileStreaming: (filePath: string, encoding: string) => Promise<any>
+  writeFileStreaming: (filePath: string, iterableData: any[], encoding: string) => Promise<any>
 }
 
 export interface FileHandlerInterface {
-  readFileStreaming: (filePath: string, encoding: string) => any
-  writeFileStreaming: (filePath: string, iterableData: any[], encoding: string) => any
+  filePath: string;
+  encoding: string;
+  readFileStreaming: () => Promise<any>
+  writeFileStreaming: (iterableData: any[]) => Promise<any>
 }
 
-export class FileHandlerStatic implements FileHandlerInterface {
+export class FileHandlerStatic implements FileHandlerStaticInterface {
 
   readFileStreaming(filePath: string, encoding: string): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -66,10 +68,8 @@ export class FileHandlerStatic implements FileHandlerInterface {
 }
 
 export class FileHandler implements FileHandlerInterface {
-
   filePath: string;
   encoding: string;
-
   constructor(filePath: string, encoding: string) {
     this.filePath = filePath;
     this.encoding = encoding || 'UTF8';
@@ -104,4 +104,9 @@ export class FileHandler implements FileHandlerInterface {
       }
     });
   }
+}
+
+export default {
+  FileHandler,
+  FileHandlerStatic
 }
