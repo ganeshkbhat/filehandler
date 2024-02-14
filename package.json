@@ -1,5 +1,5 @@
 {
-  "name": "stream-fs",
+  "name": "fs-handlers",
   "version": "1.0.0",
   "description": "a simple interface and handler for streaming file handler using streamfs filehandler package",
   "main": "index.js",
