@@ -22,10 +22,10 @@ const FileHandler = filehandler.FileHandlerStatic;
 
 const fs = new FileHandler();
 (async () => {
-  let tst = await fs.readFileStreaming("./demos/demos.test.txt", 'utf8');
+  let tst = await fs.readFileStreaming("./demos/profile.jpeg", 'binary');
   tst = tst;
   // console.log("read: \n\n", tst);
-  let written = await fs.writeFileStreaming("./demos/demos.test.txt", tst, 'utf8');
+  let written = await fs.writeFileStreaming("./demos/profile.jpeg", tst, 'binary');
   console.log("written: ", written);
 })()
 
