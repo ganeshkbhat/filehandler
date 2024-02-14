@@ -32,7 +32,7 @@ describe('[request tests] Tests to ', () => {
     // console.log("read: \n\n", tst);
     let written = await fs.writeFileStreaming("./demos/demos.test.txt", tst, "UTF8");
     // console.log("written: ", written);
-    let actual = tst[0].split("\r\n").join("\n");
+    let actual = tst.split("\r\n").join("\n");
     let expected = `MIT License
 
 Copyright (c) 2024 Krishnamurthy G B
@@ -64,7 +64,7 @@ SOFTWARE.
     // console.log("read: \n\n", tst);
     let written = await fs.writeFileStreaming("./demos/demos.test.txt", tst, "UTF8");
     // console.log("written: ", written);
-    let actual = tst[0].split("\r\n").join("\n").length;
+    let actual = tst.split("\r\n").join("\n").length;
     let expected = `MIT License
 
 Copyright (c) 2024 Krishnamurthy G B

@@ -111,7 +111,9 @@ var FileHandlerStatic = /** @class */ (function () {
             // readerStream.setEncoding(encoding || { encoding: 'UTF8' });
             readStream.on('error', function (err) { reject(err); });
             readStream.on('data', function (chunk) { chunks.push(chunk); });
-            readStream.on('end', function () { resolve(chunks); });
+            readStream.on('end', function () {
+                node_buffer_1.Buffer.isBuffer(chunks[0]) ? resolve(node_buffer_1.Buffer.concat(chunks)) : resolve(chunks.join(""));
+            });
         });
     };
     /**
