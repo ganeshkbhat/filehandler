@@ -49,8 +49,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var index_1 = require("../index");
+var index_1 = __importDefault(require("../index"));
 var FileHandler = index_1.default.FileHandler;
 var FileHandlerStatic = index_1.default.FileHandlerStatic;
 var fs = new FileHandler("./demos/demos.test.txt");
