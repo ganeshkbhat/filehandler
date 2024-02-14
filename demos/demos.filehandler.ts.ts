@@ -1,24 +1,25 @@
 /**
- *
- * Package:
+ * 
+ * Package: 
  * Author: Ganesh B
- * Description:
+ * Description: 
  * Install: npm i  --save
  * Github: https://github.com/ganeshkbhat/filehandler
  * npmjs Link: https://www.npmjs.com/package/
  * File: index.js
- * File Description:
- *
- *
+ * File Description: 
+ * 
+ * 
 */
 
 /* eslint no-console: 0 */
 
 'use strict';
 
-const filehandler = require("../src/index").default;
+import { default as filehandler } from "../index";
 
 const FileHandler = filehandler.FileHandler;
+const FileHandlerStatic = filehandler.FileHandlerStatic;
 
 const fs = new FileHandler("./demos/demos.test.txt");
 (async () => {
@@ -27,5 +28,5 @@ const fs = new FileHandler("./demos/demos.test.txt");
   console.log("read: \n\n", tst);
   let written = await fs.writeFileStreaming(tst);
   console.log("written: ", written);
-})()
+})();
 

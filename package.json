@@ -1,5 +1,5 @@
 {
-  "name": "filehandler",
+  "name": "wrapper-filehandler",
   "version": "1.0.0",
   "description": "a simple interface and handler for streaming file handler using filehandler package",
   "main": "index.js",
@@ -20,6 +20,10 @@
     "silent": true
   },
   "scripts": {
+    "demots": "ts-node ./demos/demos.filehandler.ts",
+    "demojs": "ts-node ./demos/demos.filehandler.js",
+    "builddemots": "npx tsc build ./demos/demos.filehandler.ts.ts",
+    "build": "npx tsc build ./index.ts ./src/filehandler.ts",
     "test": "mocha --reporter spec --recursive --timeout 60000"
   },
   "keywords": [],
@@ -34,6 +38,7 @@
     "pre-commit": "^1.2.2",
     "pre-push": "^0.1.4",
     "sinon": "^17.0.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "unimported": "^1.31.1"
   }

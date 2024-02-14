@@ -16,11 +16,11 @@
 
 'use strict';
 
-import { default as filehandler } from "./filehandler";
+import { default as filehandler } from "./src/filehandler";
 
-export { FileHandlerInterface, FileHandlerStaticInterface } from "./filehandler";
+export { FileHandlerInterface, FileHandlerStaticInterface } from "./src/filehandler";
 
 export default {
-  FileHandler: filehandler.FileHandler, 
+  FileHandler: filehandler.FileHandler,
   FileHandlerStatic: filehandler.FileHandlerStatic
 }

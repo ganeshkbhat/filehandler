@@ -16,10 +16,11 @@
 
 'use strict';
 
-import { default as filehandler } from "../src/index";
+import { default as filehandler } from "./src/filehandler";
 
-const FileHandler = filehandler.FileHandler;
-const FileHandlerStatic = filehandler.FileHandlerStatic;
+export { FileHandlerInterface, FileHandlerStaticInterface } from "./src/filehandler";
 
-const fs = new FileHandler("./demos.test.txt", );
-
+export default {
+  FileHandler: filehandler.FileHandler, 
+  FileHandlerStatic: filehandler.FileHandlerStatic
+}

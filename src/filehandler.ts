@@ -96,7 +96,7 @@ export class FileHandlerStatic implements FileHandlerStaticInterface {
 export class FileHandler implements FileHandlerInterface {
   filePath: string;
   encoding: string;
-  constructor(filePath: string, encoding: string | null | undefined) {
+  constructor(filePath: string, encoding?: string | null | undefined) {
     this.filePath = filePath;
     this.encoding = encoding || 'UTF8';
   }
