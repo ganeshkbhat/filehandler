@@ -1,7 +1,7 @@
 {
-  "name": "wrapper-filehandler",
+  "name": "streamfs",
   "version": "1.0.0",
-  "description": "a simple interface and handler for streaming file handler using filehandler package",
+  "description": "a simple interface and handler for streaming file handler using streamfs filehandler package",
   "main": "index.js",
   "exports": {
     "require": "./index.js",
@@ -12,6 +12,7 @@
   },
   "pre-commit": {
     "run": [
+      "build",
       "test"
     ]
   },
@@ -23,10 +24,25 @@
     "demots": "ts-node ./demos/demos.filehandler.ts",
     "demojs": "ts-node ./demos/demos.filehandler.js",
     "builddemots": "npx tsc build ./demos/demos.filehandler.ts.ts",
-    "build": "npx tsc build ./index.ts ./src/filehandler.ts",
+    "build": "npx tsc",
     "test": "mocha --reporter spec --recursive --timeout 60000"
   },
-  "keywords": [],
+  "keywords": [
+    "fs",
+    "file handler",
+    "streaming",
+    "instance",
+    "static handlers",
+    "work with files easily",
+    "read",
+    "write",
+    "read write files",
+    "read write",
+    "read files",
+    "write files",
+    "nodejs",
+    "typescrpt ts support"
+  ],
   "author": "Ganesh B <ganeshsurfs@gmail.com>",
   "license": "MIT",
   "devDependencies": {

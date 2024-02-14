@@ -73,17 +73,34 @@ var stream = require("node:stream");
 var FileHandlerStatic = /** @class */ (function () {
     function FileHandlerStatic() {
     }
-    FileHandlerStatic.prototype.readFileStreaming = function (filePath, encoding) {
+    /**
+     *
+     *
+     * @param {string} filePath
+     * @param {(string | null | undefined)} [options]
+     * @return {*}  {Promise<any>}
+     * @memberof FileHandlerStatic
+     */
+    FileHandlerStatic.prototype.readFileStreaming = function (filePath, options) {
         return new Promise(function (resolve, reject) {
-            var readStream = fs.createReadStream(filePath);
+            var readStream = fs.createReadStream(filePath, options || {});
             var chunks = [];
-            // readerStream.setEncoding(encoding || 'UTF8');
+            // readerStream.setEncoding(encoding || { encoding: 'UTF8' });
             readStream.on('error', function (err) { reject(err); });
             readStream.on('data', function (chunk) { chunks.push(chunk); });
             readStream.on('end', function () { resolve(node_buffer_1.Buffer.concat(chunks)); });
         });
     };
-    FileHandlerStatic.prototype.writeFileStreaming = function (filePath, iterableData, encoding) {
+    /**
+     *
+     *
+     * @param {string} filePath
+     * @param {any[]} iterableData
+     * @param {(string | null | undefined)} [options]
+     * @return {*}  {Promise<any>}
+     * @memberof FileHandlerStatic
+     */
+    FileHandlerStatic.prototype.writeFileStreaming = function (filePath, iterableData, options) {
         var _this = this;
         return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
             var finished, writable, _a, iterableData_1, iterableData_1_1, chunk, e_1_1, e_2;
@@ -93,7 +110,7 @@ var FileHandlerStatic = /** @class */ (function () {
                     case 0:
                         _e.trys.push([0, 15, , 16]);
                         finished = util.promisify(stream.finished);
-                        writable = fs.createWriteStream(filePath);
+                        writable = fs.createWriteStream(filePath, options || {});
                         _e.label = 1;
                     case 1:
                         _e.trys.push([1, 7, 8, 13]);
@@ -157,14 +174,26 @@ exports.FileHandlerStatic = FileHandlerStatic;
  * @implements {FileHandlerInterface}
  */
 var FileHandler = /** @class */ (function () {
-    function FileHandler(filePath, encoding) {
+    /**
+     * Creates an instance of FileHandler.
+     * @param {string} filePath
+     * @param {(string | null | undefined)} [options]
+     * @memberof FileHandler
+     */
+    function FileHandler(filePath, options) {
         this.filePath = filePath;
-        this.encoding = encoding || 'UTF8';
+        this.options = options;
     }
+    /**
+     *
+     *
+     * @return {*}  {Promise<any>}
+     * @memberof FileHandler
+     */
     FileHandler.prototype.readFileStreaming = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            var readStream = fs.createReadStream(_this.filePath);
+            var readStream = fs.createReadStream(_this.filePath, _this.options || {});
             var chunks = [];
             // readerStream.setEncoding(encoding);
             readStream.on('error', function (err) { reject(err); });
@@ -172,6 +201,13 @@ var FileHandler = /** @class */ (function () {
             readStream.on('end', function () { resolve(node_buffer_1.Buffer.concat(chunks)); });
         });
     };
+    /**
+     *
+     *
+     * @param {any[]} iterableData
+     * @return {*}  {Promise<any>}
+     * @memberof FileHandler
+     */
     FileHandler.prototype.writeFileStreaming = function (iterableData) {
         var _this = this;
         return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
@@ -182,7 +218,7 @@ var FileHandler = /** @class */ (function () {
                     case 0:
                         _e.trys.push([0, 15, , 16]);
                         finished = util.promisify(stream.finished);
-                        writable = fs.createWriteStream(this.filePath);
+                        writable = fs.createWriteStream(this.filePath, this.options || {});
                         _e.label = 1;
                     case 1:
                         _e.trys.push([1, 7, 8, 13]);

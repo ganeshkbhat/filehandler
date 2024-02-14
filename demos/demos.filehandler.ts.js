@@ -61,7 +61,7 @@ var fs = new FileHandler("./demos/demos.test.txt");
             case 0: return [4 /*yield*/, fs.readFileStreaming()];
             case 1:
                 tst = _a.sent();
-                tst = tst.toString(fs.encoding);
+                tst = tst.toString(fs.options);
                 console.log("read: \n\n", tst);
                 return [4 /*yield*/, fs.writeFileStreaming(tst)];
             case 2:

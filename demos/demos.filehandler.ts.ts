@@ -24,7 +24,7 @@ const FileHandlerStatic = filehandler.FileHandlerStatic;
 const fs = new FileHandler("./demos/demos.test.txt");
 (async () => {
   let tst = await fs.readFileStreaming();
-  tst = tst.toString(fs.encoding);
+  tst = tst.toString(fs.options);
   console.log("read: \n\n", tst);
   let written = await fs.writeFileStreaming(tst);
   console.log("written: ", written);
