@@ -34,6 +34,7 @@
 'use strict';
 
 import { expect } from 'chai';
+import { FileHandler, FileHandlerStatic } from './index';
 
 describe('[request tests] Tests to ', () => {
 

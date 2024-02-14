@@ -19,7 +19,6 @@
 import { default as filehandler } from "./src/filehandler";
 
 export { FileHandlerInterface, FileHandlerStaticInterface } from "./src/filehandler";
-
 export default {
   FileHandler: filehandler.FileHandler, 
   FileHandlerStatic: filehandler.FileHandlerStatic
