@@ -50,7 +50,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var index_1 = require("../src/index");
+var index_1 = require("../index");
 var FileHandler = index_1.default.FileHandler;
 var FileHandlerStatic = index_1.default.FileHandlerStatic;
 var fs = new FileHandler("./demos/demos.test.txt");
