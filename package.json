@@ -1,0 +1,40 @@
+{
+  "name": "filehandler",
+  "version": "1.0.0",
+  "description": "a simple interface and handler for streaming file handler using filehandler package",
+  "main": "index.js",
+  "exports": {
+    "require": "./index.js",
+    "import": "./index.mjs"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "pre-commit": {
+    "run": [
+      "test"
+    ]
+  },
+  "pre-push": {
+    "run": [],
+    "silent": true
+  },
+  "scripts": {
+    "test": "mocha --reporter spec --recursive --timeout 60000"
+  },
+  "keywords": [],
+  "author": "Ganesh B <ganeshsurfs@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "chai": "^4.4.1",
+    "clean-pkg-json": "^1.2.0",
+    "esbuild": "^0.20.0",
+    "mocha": "^10.2.0",
+    "pre-commit": "^1.2.2",
+    "pre-push": "^0.1.4",
+    "sinon": "^17.0.1",
+    "typescript": "^5.3.3",
+    "unimported": "^1.31.1"
+  }
+}
