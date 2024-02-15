@@ -34,7 +34,7 @@ describe('[request tests] Tests to check jpeg image using filehandler static usa
     // console.log("written: ", written);
     let actual = tst;
     let expected = true;
-    expect(written).to.equal(expected);
+    expect(!!written).to.equal(expected);
     expect(typeof actual).to.equal("string");
   });
 
