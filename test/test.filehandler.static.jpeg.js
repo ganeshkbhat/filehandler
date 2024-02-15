@@ -44,10 +44,11 @@ describe('[request tests] Tests to check jpeg image using filehandler static usa
     // console.log("read: \n\n", tst);
     let written = await fs.writeFileStreaming("./demos/profile.jpeg", tst, "binary");
     // console.log("written: ", written);
-    let actual = tst.split("\r\n").join("\n").length;
+    let actual = tst.length;
     let expected = true;
 
     expect(written).to.equal(expected);
+    expect(actual).to.equal(613945);
   });
 
 });

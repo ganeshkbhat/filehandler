@@ -23,7 +23,7 @@ const fs = new FileHandler("./demos/profile.jpeg", "binary");
 
 (async () => {
   let tst = await fs.readFileStreaming();
-  console.log("read: \n\n", typeof tst, tst);
+  console.log("read: \n\n", typeof tst, tst.length);
   let written = await fs.writeFileStreaming(tst);
   console.log("written: ", written);
 })();
