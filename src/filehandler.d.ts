@@ -19,8 +19,8 @@
  * @interface FileHandlerStaticInterface
  */
 export interface FileHandlerStaticInterface {
-    readFileStreaming: (filePath: string, options?: BufferEncoding | any | undefined) => Promise<any>;
-    writeFileStreaming: (filePath: string, iterableData: any[], options?: BufferEncoding | any | undefined) => Promise<any>;
+    readFileStreaming: (filePath: string | URL, options?: BufferEncoding | any | undefined) => Promise<any>;
+    writeFileStreaming: (filePath: string | URL, iterableData: any[], options?: BufferEncoding | any | undefined) => Promise<any>;
 }
 /**
  *
@@ -29,7 +29,7 @@ export interface FileHandlerStaticInterface {
  * @interface FileHandlerInterface
  */
 export interface FileHandlerInterface {
-    filePath: string;
+    filePath: string | URL;
     options: BufferEncoding | any | undefined;
     readFileStreaming: () => Promise<any>;
     writeFileStreaming: (iterableData: any[]) => Promise<any>;
@@ -45,22 +45,22 @@ export declare class FileHandlerStatic implements FileHandlerStaticInterface {
     /**
      *
      *
-     * @param {string} filePath
+     * @param {string | URL} filePath
      * @param {(string | null | undefined)} [options]
      * @return {*}  {Promise<any>}
      * @memberof FileHandlerStatic
      */
-    readFileStreaming(filePath: string, options?: BufferEncoding | any | undefined): Promise<any>;
+    readFileStreaming(filePath: string | URL, options?: BufferEncoding | any | undefined): Promise<any>;
     /**
      *
      *
-     * @param {string} filePath
+     * @param {string | URL} filePath
      * @param {any[]} iterableData
      * @param {(string | null | undefined)} [options]
      * @return {*}  {Promise<any>}
      * @memberof FileHandlerStatic
      */
-    writeFileStreaming(filePath: string, iterableData: any[], options?: BufferEncoding | any | undefined): Promise<any>;
+    writeFileStreaming(filePath: string | URL, iterableData: any[], options?: BufferEncoding | any | undefined): Promise<any>;
 }
 /**
  *
@@ -70,15 +70,15 @@ export declare class FileHandlerStatic implements FileHandlerStaticInterface {
  * @implements {FileHandlerInterface}
  */
 export declare class FileHandler implements FileHandlerInterface {
-    filePath: string;
+    filePath: string | URL;
     options: BufferEncoding | any | undefined;
     /**
      * Creates an instance of FileHandler.
-     * @param {string} filePath
+     * @param {string | URL} filePath
      * @param {(string | null | undefined)} [options]
      * @memberof FileHandler
      */
-    constructor(filePath: string, options?: BufferEncoding | any | undefined);
+    constructor(filePath: string | URL, options?: BufferEncoding | any | undefined);
     /**
      *
      *

@@ -19,7 +19,7 @@
 const { expect } = require('chai');
 const { FileHandler, FileHandlerStatic } = require('../index').default;
 
-describe('[request tests] Tests to ', () => {
+describe('[request tests] Tests to check text using filehandler static usage', () => {
   let tst, written;
 
   before(() => { });
@@ -28,9 +28,9 @@ describe('[request tests] Tests to ', () => {
 
   it('should respond with the text to be license as stored in the demos folder', async () => {
     const fs = new FileHandlerStatic();
-    let tst = await fs.readFileStreaming("./demos/demos.test.txt", "UTF8");
+    let tst = await fs.readFileStreaming("./demos/demos.test.txt", "utf8");
     // console.log("read: \n\n", tst);
-    let written = await fs.writeFileStreaming("./demos/demos.test.txt", tst, "UTF8");
+    let written = await fs.writeFileStreaming("./demos/demos.test.txt", tst, "utf8");
     // console.log("written: ", written);
     let actual = tst.split("\r\n").join("\n");
     let expected = `MIT License
@@ -60,9 +60,9 @@ SOFTWARE.
 
   it('should respond with the text of equal size to be license as stored in the demos folder', async () => {
     const fs = new FileHandlerStatic();
-    let tst = await fs.readFileStreaming("./demos/demos.test.txt", "UTF8");
+    let tst = await fs.readFileStreaming("./demos/demos.test.txt", "utf8");
     // console.log("read: \n\n", tst);
-    let written = await fs.writeFileStreaming("./demos/demos.test.txt", tst, "UTF8");
+    let written = await fs.writeFileStreaming("./demos/demos.test.txt", tst, "utf8");
     // console.log("written: ", written);
     let actual = tst.split("\r\n").join("\n").length;
     let expected = `MIT License

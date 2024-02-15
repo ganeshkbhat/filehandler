@@ -99,7 +99,7 @@ var FileHandlerStatic = /** @class */ (function () {
     /**
      *
      *
-     * @param {string} filePath
+     * @param {string | URL} filePath
      * @param {(string | null | undefined)} [options]
      * @return {*}  {Promise<any>}
      * @memberof FileHandlerStatic
@@ -119,7 +119,7 @@ var FileHandlerStatic = /** @class */ (function () {
     /**
      *
      *
-     * @param {string} filePath
+     * @param {string | URL} filePath
      * @param {any[]} iterableData
      * @param {(string | null | undefined)} [options]
      * @return {*}  {Promise<any>}
@@ -201,11 +201,14 @@ exports.FileHandlerStatic = FileHandlerStatic;
 var FileHandler = /** @class */ (function () {
     /**
      * Creates an instance of FileHandler.
-     * @param {string} filePath
+     * @param {string | URL} filePath
      * @param {(string | null | undefined)} [options]
      * @memberof FileHandler
      */
     function FileHandler(filePath, options) {
+        // if (!filePath || !options) {
+        //   throw new Error('file path and options have to provided \n\n type BufferEncoding = "ascii" | "utf8" | "utf-8" | "utf16le" | "utf-16le" | "ucs2" | "ucs-2" | "base64" | "base64url" | "latin1" | "binary" | "hex" \n\n ')
+        // }
         this.filePath = filePath;
         this.options = options;
     }
@@ -218,12 +221,14 @@ var FileHandler = /** @class */ (function () {
     FileHandler.prototype.readFileStreaming = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            var readStream = fs.createReadStream(_this.filePath, _this.options || {});
+            var readStream = fs.createReadStream(_this.filePath, _this.options);
             var chunks = [];
-            // readerStream.setEncoding(encoding);
+            // readerStream.setEncoding(encoding || { encoding: 'UTF8' });
             readStream.on('error', function (err) { reject(err); });
             readStream.on('data', function (chunk) { chunks.push(chunk); });
-            readStream.on('end', function () { resolve(node_buffer_1.Buffer.concat(chunks)); });
+            readStream.on('end', function () {
+                node_buffer_1.Buffer.isBuffer(chunks[0]) ? resolve(node_buffer_1.Buffer.concat(chunks)) : resolve(chunks.join(""));
+            });
         });
     };
     /**
@@ -243,7 +248,7 @@ var FileHandler = /** @class */ (function () {
                     case 0:
                         _e.trys.push([0, 15, , 16]);
                         finished = util.promisify(stream.finished);
-                        writable = fs.createWriteStream(this.filePath, this.options || {});
+                        writable = fs.createWriteStream(this.filePath, this.options);
                         _e.label = 1;
                     case 1:
                         _e.trys.push([1, 7, 8, 13]);

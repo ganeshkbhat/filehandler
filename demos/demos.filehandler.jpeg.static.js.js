@@ -18,14 +18,13 @@
 
 const filehandler = require("../index").default;
 
-const FileHandler = filehandler.FileHandler;
+const FileHandler = filehandler.FileHandlerStatic;
 
-const fs = new FileHandler("./demos/demos.test.txt", "utf8");
+const fs = new FileHandler();
+
 (async () => {
-  let tst = await fs.readFileStreaming();
-  tst = tst.toString(fs.options);
+  let tst = await fs.readFileStreaming("./demos/profile.jpeg", "binary");
   console.log("read: \n\n", tst);
-  let written = await fs.writeFileStreaming(tst);
+  let written = await fs.writeFileStreaming("./demos/profile.jpeg", tst, "binary");
   console.log("written: ", written);
-})()
-
+})();

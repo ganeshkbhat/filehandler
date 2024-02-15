@@ -12,6 +12,7 @@
  *
 */
 export { FileHandlerInterface, FileHandlerStaticInterface } from "./src/filehandler";
+export { FileHandler, FileHandlerStatic } from "./src/filehandler";
 declare const _default: {
     FileHandler: typeof import("./src/filehandler").FileHandler;
     FileHandlerStatic: typeof import("./src/filehandler").FileHandlerStatic;

@@ -30,8 +30,8 @@ import * as stream from 'node:stream';
  * @interface FileHandlerStaticInterface
  */
 export interface FileHandlerStaticInterface {
-  readFileStreaming: (filePath: string, options?: BufferEncoding | any | undefined) => Promise<any>
-  writeFileStreaming: (filePath: string, iterableData: any[], options?: BufferEncoding | any | undefined) => Promise<any>
+  readFileStreaming: (filePath: string | URL, options?: BufferEncoding | any | undefined) => Promise<any>
+  writeFileStreaming: (filePath: string | URL, iterableData: any[], options?: BufferEncoding | any | undefined) => Promise<any>
 }
 
 /**
@@ -41,7 +41,7 @@ export interface FileHandlerStaticInterface {
  * @interface FileHandlerInterface
  */
 export interface FileHandlerInterface {
-  filePath: string;
+  filePath: string | URL;
   options: BufferEncoding | any | undefined;
   readFileStreaming: () => Promise<any>
   writeFileStreaming: (iterableData: any[]) => Promise<any>
@@ -59,12 +59,12 @@ export class FileHandlerStatic implements FileHandlerStaticInterface {
   /**
    *
    *
-   * @param {string} filePath
+   * @param {string | URL} filePath
    * @param {(string | null | undefined)} [options]
    * @return {*}  {Promise<any>}
    * @memberof FileHandlerStatic
    */
-  readFileStreaming(filePath: string, options?: BufferEncoding | any | undefined): Promise<any> {
+  readFileStreaming(filePath: string | URL, options?: BufferEncoding | any | undefined): Promise<any> {
     return new Promise((resolve, reject) => {
       let readStream = fs.createReadStream(filePath, options || {});
       let chunks: any[] = [];
@@ -80,13 +80,13 @@ export class FileHandlerStatic implements FileHandlerStaticInterface {
   /**
    *
    *
-   * @param {string} filePath
+   * @param {string | URL} filePath
    * @param {any[]} iterableData
    * @param {(string | null | undefined)} [options]
    * @return {*}  {Promise<any>}
    * @memberof FileHandlerStatic
    */
-  writeFileStreaming(filePath: string, iterableData: any[], options?: BufferEncoding | any | undefined): Promise<any> {
+  writeFileStreaming(filePath: string | URL, iterableData: any[], options?: BufferEncoding | any | undefined): Promise<any> {
     return new Promise(async (resolve, reject) => {
       try {
         const finished = util.promisify(stream.finished); // (A)
@@ -113,16 +113,19 @@ export class FileHandlerStatic implements FileHandlerStaticInterface {
  * @implements {FileHandlerInterface}
  */
 export class FileHandler implements FileHandlerInterface {
-  filePath: string;
+  filePath: string | URL;
   options: BufferEncoding | any | undefined;
 
   /**
    * Creates an instance of FileHandler.
-   * @param {string} filePath
+   * @param {string | URL} filePath
    * @param {(string | null | undefined)} [options]
    * @memberof FileHandler
    */
-  constructor(filePath: string, options?: BufferEncoding | any | undefined) {
+  constructor(filePath: string | URL, options?: BufferEncoding | any | undefined) {
+    // if (!filePath || !options) {
+    //   throw new Error('file path and options have to provided \n\n type BufferEncoding = "ascii" | "utf8" | "utf-8" | "utf16le" | "utf-16le" | "ucs2" | "ucs-2" | "base64" | "base64url" | "latin1" | "binary" | "hex" \n\n ')
+    // }
     this.filePath = filePath;
     this.options = options;
   }
@@ -135,12 +138,14 @@ export class FileHandler implements FileHandlerInterface {
    */
   readFileStreaming(): Promise<any> {
     return new Promise((resolve, reject) => {
-      let readStream = fs.createReadStream(this.filePath, this.options || {});
+      let readStream = fs.createReadStream(this.filePath, this.options);
       let chunks: any[] = [];
-      // readerStream.setEncoding(encoding);
+      // readerStream.setEncoding(encoding || { encoding: 'UTF8' });
       readStream.on('error', (err: any) => { reject(err); });
       readStream.on('data', (chunk: any) => { chunks.push(chunk); });
-      readStream.on('end', () => { resolve(Buffer.concat(chunks)); });
+      readStream.on('end', () => {
+        Buffer.isBuffer(chunks[0]) ? resolve(Buffer.concat(chunks)) : resolve(chunks.join(""));
+      });
     });
   }
 
@@ -155,9 +160,9 @@ export class FileHandler implements FileHandlerInterface {
     return new Promise(async (resolve, reject) => {
       try {
         const finished = util.promisify(stream.finished); // (A)
-        const writable = fs.createWriteStream(this.filePath, this.options || {});
-        // writable.setEncoding(encoding); 
+        const writable = fs.createWriteStream(this.filePath, this.options);
         for await (const chunk of iterableData) {
+          // Handle backpressure
           if (!writable.write(chunk)) { await once(writable, 'drain'); }
         }
         writable.end();

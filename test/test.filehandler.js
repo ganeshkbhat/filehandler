@@ -19,7 +19,7 @@
 const { expect } = require('chai');
 const { FileHandler, FileHandlerStatic } = require('../index').default;
 
-describe('[request tests] Tests to ', () => {
+describe('[request tests] Tests to check text using filehandler instance', () => {
   let tst, written;
 
   before(() => { });
@@ -27,9 +27,9 @@ describe('[request tests] Tests to ', () => {
   after(() => { });
 
   it('should respond with the text to be license as stored in the demos folder', async () => {
-    const fs = new FileHandler("./demos/demos.test.txt");
+    const fs = new FileHandler("./demos/demos.test.txt", "utf8");
     let tst = await fs.readFileStreaming();
-    tst = tst.toString(fs.encoding);
+    tst = tst.toString(fs.options);
     // console.log("read: \n\n", tst);
     let written = await fs.writeFileStreaming(tst);
     // console.log("written: ", written);
@@ -60,9 +60,9 @@ SOFTWARE.
   });
 
   it('should respond with the text of equal size to be license as stored in the demos folder', async () => {
-    const fs = new FileHandler("./demos/demos.test.txt");
+    const fs = new FileHandler("./demos/demos.test.txt", "utf8");
     let tst = await fs.readFileStreaming();
-    tst = tst.toString(fs.encoding);
+    tst = tst.toString(fs.options);
     // console.log("read: \n\n", tst);
     let written = await fs.writeFileStreaming(tst);
     // console.log("written: ", written);

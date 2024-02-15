@@ -16,16 +16,15 @@
 
 'use strict';
 
-const filehandler = require("../index").default;
+import * as pkg from "../index.js";
+const FileHandlerStatic = pkg.default.FileHandlerStatic;
 
-const FileHandler = filehandler.FileHandler;
+const fs = new FileHandlerStatic();
 
-const fs = new FileHandler("./demos/demos.test.txt", "utf8");
 (async () => {
-  let tst = await fs.readFileStreaming();
-  tst = tst.toString(fs.options);
+  let tst = await fs.readFileStreaming("./demos/profile.jpeg", "binary");
+  tst = tst;
   console.log("read: \n\n", tst);
-  let written = await fs.writeFileStreaming(tst);
+  let written = await fs.writeFileStreaming("./demos/profile.jpeg", tst, "binary");
   console.log("written: ", written);
-})()
-
+})();

@@ -4,8 +4,10 @@
   "description": "a simple interface and handler for streaming file handler using streamfs filehandler package",
   "main": "index.js",
   "exports": {
-    "require": "./index.js",
-    "import": "./index.mjs"
+    ".": {
+      "require": "./index.js",
+      "import": "./index.mjs"
+    }
   },
   "directories": {
     "test": "test"
