@@ -47,6 +47,14 @@
   ],
   "author": "Ganesh B <ganeshsurfs@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ganeshkbhat/filehandler.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ganeshkbhat/filehandler/issues"
+  },
+  "homepage": "https://github.com/ganeshkbhat/filehandler#readme",
   "devDependencies": {
     "@types/node": "^20.11.16",
     "chai": "^4.4.1",
