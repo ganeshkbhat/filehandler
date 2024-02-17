@@ -90,7 +90,7 @@ var stream = __importStar(require("node:stream"));
  *
  *
  * @export
- * @interface FileHandlerStaticInterface
+ * @class FileHandlerStaticInterface
  */
 var FileHandlerStaticInterface = /** @class */ (function () {
     function FileHandlerStaticInterface() {

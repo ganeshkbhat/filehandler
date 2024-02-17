@@ -22,12 +22,11 @@ import { once } from 'node:events';
 import * as util from 'node:util';
 import * as stream from 'node:stream';
 
-
 /**
  *
  *
  * @export
- * @interface FileHandlerStaticInterface
+ * @class FileHandlerStaticInterface
  */
 export class FileHandlerStaticInterface {
   static readFileStreaming: (filePath: string | URL, options?: BufferEncoding | any | undefined) => Promise<any>

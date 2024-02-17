@@ -16,7 +16,7 @@
  *
  *
  * @export
- * @interface FileHandlerStaticInterface
+ * @class FileHandlerStaticInterface
  */
 export declare class FileHandlerStaticInterface {
     static readFileStreaming: (filePath: string | URL, options?: BufferEncoding | any | undefined) => Promise<any>;
