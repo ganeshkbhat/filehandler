@@ -27,7 +27,8 @@ describe('[request tests] Tests to check jpeg image using filehandler static usa
   after(() => { });
 
   it('should read and write with the binary as stored in the demos folder', async () => {
-    const fs = new FileHandlerStatic();
+    // const fs = new FileHandlerStatic();
+    const fs = FileHandlerStatic;
     let tst = await fs.readFileStreaming("./demos/profile.jpeg", "binary");
     // console.log("read: \n\n", tst);
     let written = await fs.writeFileStreaming("./demos/profile.jpeg", tst, "binary");
@@ -39,7 +40,8 @@ describe('[request tests] Tests to check jpeg image using filehandler static usa
   });
 
   it('should respond with the binary of equal size to be license as stored in the demos folder', async () => {
-    const fs = new FileHandlerStatic();
+    // const fs = new FileHandlerStatic();
+    const fs = FileHandlerStatic;
     let tst = await fs.readFileStreaming("./demos/profile.jpeg", 'binary');
     // console.log("read: \n\n", tst);
     let written = await fs.writeFileStreaming("./demos/profile.jpeg", tst, "binary");

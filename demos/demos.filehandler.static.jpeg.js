@@ -55,7 +55,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = __importDefault(require("../index"));
 var FileHandler = index_1.default.FileHandlerStatic;
-var fs = new FileHandler();
+// const fs = new FileHandler();
+var fs = FileHandler;
 (function () { return __awaiter(void 0, void 0, void 0, function () {
     var tst, written;
     return __generator(this, function (_a) {

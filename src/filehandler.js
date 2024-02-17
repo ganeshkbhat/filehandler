@@ -80,12 +80,24 @@ var __asyncValues = (this && this.__asyncValues) || function (o) {
     function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FileHandler = exports.FileHandlerStatic = void 0;
+exports.FileHandler = exports.FileHandlerStatic = exports.FileHandlerStaticInterface = void 0;
 var fs = __importStar(require("node:fs"));
 var node_buffer_1 = require("node:buffer");
 var node_events_1 = require("node:events");
 var util = __importStar(require("node:util"));
 var stream = __importStar(require("node:stream"));
+/**
+ *
+ *
+ * @export
+ * @interface FileHandlerStaticInterface
+ */
+var FileHandlerStaticInterface = /** @class */ (function () {
+    function FileHandlerStaticInterface() {
+    }
+    return FileHandlerStaticInterface;
+}());
+exports.FileHandlerStaticInterface = FileHandlerStaticInterface;
 /**
  *
  *
@@ -104,7 +116,7 @@ var FileHandlerStatic = /** @class */ (function () {
      * @return {*}  {Promise<any>}
      * @memberof FileHandlerStatic
      */
-    FileHandlerStatic.prototype.readFileStreaming = function (filePath, options) {
+    FileHandlerStatic.readFileStreaming = function (filePath, options) {
         return new Promise(function (resolve, reject) {
             var readStream = fs.createReadStream(filePath, options || {});
             var chunks = [];
@@ -125,7 +137,7 @@ var FileHandlerStatic = /** @class */ (function () {
      * @return {*}  {Promise<any>}
      * @memberof FileHandlerStatic
      */
-    FileHandlerStatic.prototype.writeFileStreaming = function (filePath, iterableData, options) {
+    FileHandlerStatic.writeFileStreaming = function (filePath, iterableData, options) {
         var _this = this;
         return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
             var finished, writable, _a, iterableData_1, iterableData_1_1, chunk, e_1_1, e_2;

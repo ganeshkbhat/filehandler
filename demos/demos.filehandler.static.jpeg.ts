@@ -20,7 +20,8 @@ import { default as filehandler } from "../index";
 
 const FileHandler = filehandler.FileHandlerStatic;
 
-const fs = new FileHandler();
+// const fs = new FileHandler();
+const fs = FileHandler;
 (async () => {
   let tst = await fs.readFileStreaming("./demos/profile.jpeg", 'binary');
   tst = tst;

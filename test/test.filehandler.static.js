@@ -27,7 +27,8 @@ describe('[request tests] Tests to check text using filehandler static usage', (
   after(() => { });
 
   it('should respond with the text to be license as stored in the demos folder', async () => {
-    const fs = new FileHandlerStatic();
+    // const fs = new FileHandlerStatic();
+    const fs = FileHandlerStatic;
     let tst = await fs.readFileStreaming("./demos/demos.test.txt", "utf8");
     // console.log("read: \n\n", tst);
     let written = await fs.writeFileStreaming("./demos/demos.test.txt", tst, "utf8");
@@ -59,7 +60,8 @@ SOFTWARE.
   });
 
   it('should respond with the text of equal size to be license as stored in the demos folder', async () => {
-    const fs = new FileHandlerStatic();
+    // const fs = new FileHandlerStatic();
+    const fs = FileHandlerStatic;
     let tst = await fs.readFileStreaming("./demos/demos.test.txt", "utf8");
     // console.log("read: \n\n", tst);
     let written = await fs.writeFileStreaming("./demos/demos.test.txt", tst, "utf8");

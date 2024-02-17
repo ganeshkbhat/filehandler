@@ -18,9 +18,9 @@
  * @export
  * @interface FileHandlerStaticInterface
  */
-export interface FileHandlerStaticInterface {
-    readFileStreaming: (filePath: string | URL, options?: BufferEncoding | any | undefined) => Promise<any>;
-    writeFileStreaming: (filePath: string | URL, iterableData: any[], options?: BufferEncoding | any | undefined) => Promise<any>;
+export declare class FileHandlerStaticInterface {
+    static readFileStreaming: (filePath: string | URL, options?: BufferEncoding | any | undefined) => Promise<any>;
+    static writeFileStreaming: (filePath: string | URL, iterableData: any[], options?: BufferEncoding | any | undefined) => Promise<any>;
 }
 /**
  *
@@ -50,7 +50,7 @@ export declare class FileHandlerStatic implements FileHandlerStaticInterface {
      * @return {*}  {Promise<any>}
      * @memberof FileHandlerStatic
      */
-    readFileStreaming(filePath: string | URL, options?: BufferEncoding | any | undefined): Promise<any>;
+    static readFileStreaming(filePath: string | URL, options?: BufferEncoding | any | undefined): Promise<any>;
     /**
      *
      *
@@ -60,7 +60,7 @@ export declare class FileHandlerStatic implements FileHandlerStaticInterface {
      * @return {*}  {Promise<any>}
      * @memberof FileHandlerStatic
      */
-    writeFileStreaming(filePath: string | URL, iterableData: any[], options?: BufferEncoding | any | undefined): Promise<any>;
+    static writeFileStreaming(filePath: string | URL, iterableData: any[], options?: BufferEncoding | any | undefined): Promise<any>;
 }
 /**
  *

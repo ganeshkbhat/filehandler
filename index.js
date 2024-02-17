@@ -17,11 +17,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FileHandlerStatic = exports.FileHandler = void 0;
+exports.FileHandlerStatic = exports.FileHandler = exports.FileHandlerStaticInterface = void 0;
 var filehandler_1 = __importDefault(require("./src/filehandler"));
 var filehandler_2 = require("./src/filehandler");
-Object.defineProperty(exports, "FileHandler", { enumerable: true, get: function () { return filehandler_2.FileHandler; } });
-Object.defineProperty(exports, "FileHandlerStatic", { enumerable: true, get: function () { return filehandler_2.FileHandlerStatic; } });
+Object.defineProperty(exports, "FileHandlerStaticInterface", { enumerable: true, get: function () { return filehandler_2.FileHandlerStaticInterface; } });
+var filehandler_3 = require("./src/filehandler");
+Object.defineProperty(exports, "FileHandler", { enumerable: true, get: function () { return filehandler_3.FileHandler; } });
+Object.defineProperty(exports, "FileHandlerStatic", { enumerable: true, get: function () { return filehandler_3.FileHandlerStatic; } });
 exports.default = {
     FileHandler: filehandler_1.default.FileHandler,
     FileHandlerStatic: filehandler_1.default.FileHandlerStatic
