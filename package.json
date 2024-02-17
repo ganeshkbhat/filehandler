@@ -26,7 +26,7 @@
     "demots": "ts-node ./demos/demos.filehandler.ts",
     "demojs": "ts-node ./demos/demos.filehandler.js",
     "builddemots": "npx tsc build ./demos/demos.filehandler.ts.ts",
-    "build": "npx tsc && git add .",
+    "build": "tsc && git add .",
     "test": "mocha --reporter spec --recursive --timeout 60000"
   },
   "keywords": [
